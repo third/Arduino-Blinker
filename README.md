@@ -10,7 +10,7 @@ Below is a simple tool to generate blink sketch for your Arduino. Follow the ste
 
 1. Click "Start Recording" button.
 2. Pick a letter on the keyboard to use as recording key. I use letter "B" (as in blink).
-3. Press down they key multiple times on different timings. Down means ON and release means OFF.
+3. Press down the key multiple times on different timings. Down means ON and release means OFF.
 4. When done, press "Stop Recording" button.
 5. Press "Preview" to replay what you have recorded.
 6. When your happy with the output, copy-paste the code on the textbox to your Arduino IDE.
