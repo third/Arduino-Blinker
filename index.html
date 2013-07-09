@@ -81,10 +81,10 @@
 	        <ol>
 	          <li>Click "Start Recording" button.</li>
 	          <li>Pick a letter on the keyboard to use as recording key. I use letter "B" (as in blink).</li>
-	          <li>Press down the key multiple times on different timings. Down means ON and release means OFF.</li>
+	          <li>Press down the selected letter multiple times according to the blinking pattern that you desire. Down means ON and release means OFF.</li>
 	          <li>When done, press "Stop Recording" button.</li>
 	          <li>Press "Preview" to replay what you have recorded.</li>
-	          <li>When your happy with the output, copy-paste the code on the textbox to your Arduino IDE.</li>
+	          <li>When you're happy with the output, copy-paste the code on the textbox to your Arduino IDE.</li>
 	        </ol>
         </div>
       </div>
@@ -96,6 +96,20 @@
     	  <input type="button" id="btnRecorder" class="btn btn-large btn-primary" value="Start Recording">
 		  <input type="button" id="btnPreview" class="btn btn-large" value="Preview">
   		</div>
+	  </div>
+
+	  <div class="row" style="margin: 10px 0px;">
+	  	<div class="span8">
+	  		<div>Settings</div>
+	  		<label class="radio" title="e.g 237 becomes 240">
+				<input type="radio" name="radRound" id="radRound" value="0" checked>
+				Round delay to the nearest ten.
+			</label>
+			<label class="radio" title="e.g. 237 becomes 230">
+				<input type="radio" name="radRound" id="radRoundDown" value="1">
+				Round delay DOWNWARD to the nearest ten.
+			</label>
+	  	</div>
 	  </div>
 
 	  <div class="row">
@@ -134,10 +148,18 @@
 		window.onload = function() {
 			var btnRecorder = document.getElementById('btnRecorder');
 			var btnPreview = document.getElementById('btnPreview');
+			var radRoundDown = document.getElementById('radRoundDown');
 			var divLed = document.getElementById('divLed');
 			var txtResult = document.getElementById('txtResult');
 
-			var ledRecorder = new LedRecorder(btnRecorder, btnPreview, divLed, txtResult);
+			var options = {
+				btnRecorder: btnRecorder,
+				btnPreview: btnPreview,
+				radRoundDown: radRoundDown,
+				divLed: divLed,
+				txtResult: txtResult
+			}
+			var ledRecorder = new LedRecorder(options);
 
 			
 			window.onkeydown = function() {

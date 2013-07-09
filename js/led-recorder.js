@@ -4,16 +4,18 @@ var states = {
 	STOP: 2
 }
 
-var LedRecorder = function(btnRecorder, btnPreview, divLed, txtResult) {
+var LedRecorder = function(options) {
 	this.blinks	= [];
 	this.startTime = null;
 	this.state = states.RESET;
 	this.keyIsDown = false;
+	this.isRoundDown = false;
 
-	this.btnRecorder = btnRecorder;
-	this.btnPreview = btnPreview;
-	this.divLed = divLed;
-	this.txtResult = txtResult;
+	this.btnRecorder = options.btnRecorder;
+	this.btnPreview = options.btnPreview;
+	this.radRoundDown = options.radRoundDown;
+	this.divLed = options.divLed;
+	this.txtResult = options.txtResult;
 
 	this.init();
 }
@@ -58,7 +60,16 @@ LedRecorder.prototype = {
 		var endTime = (new Date()).getTime()
 		var elapsed = endTime - this.startTime;
 
-		//console.log(elapsed)
+		//console.log('orig value = ' + elapsed)
+
+		if(this.isRoundDown) {
+			elapsed = Math.floor(elapsed / 10)*10;
+		}
+		else {
+			elapsed = Math.round(elapsed / 10)*10;
+		}
+
+		//console.log('new value = ' + elapsed)
 
 		this.blinks.push(elapsed);
 	},
@@ -108,6 +119,8 @@ LedRecorder.prototype = {
 			if(this.blinks.length > 0) {
 				this.endTimer();
 			}
+
+			this.isRoundDown = this.radRoundDown.checked;
 
 			this.startTimer();
 
