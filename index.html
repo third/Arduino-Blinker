@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Arduino Blinker</title>
+  <meta charset="UTF-8">
+  <title>Arduino Blinker</title>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A simple tool to generate blink sketch for your Arduino">
     <meta name="author" content="Third Santor">
 
@@ -39,20 +39,20 @@
         padding: 14px 24px;
       }
 
-	  /*LED css*/
+    /*LED css*/
       .led {
-			width: 50px;
-			height: 50px;
-			border-radius: 25px;
-	  }
+      width: 50px;
+      height: 50px;
+      border-radius: 25px;
+    }
 
-	  .led-on {			
-			background-color: #FFBE00;
-	  }
+    .led-on {      
+      background-color: #FFBE00;
+    }
 
-	  .lef-off {
-	    background-color: transparent;
-	  }     
+    .lef-off {
+      background-color: transparent;
+    }     
     </style>
     <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -61,10 +61,10 @@
       <script src="http://twitter.github.io/bootstrap/assets/js/html5shiv.js"></script>
     <![endif]-->
 
-	
+  
 </head>
-<body>	
-	<div class="container-narrow">
+<body>  
+  <div class="container-narrow">
 
       <div class="masthead">
         
@@ -77,55 +77,55 @@
         <h1>BLINK is Back!</h1>
         <p class="lead">Below is a simple tool to generate blink sketch for your Arduino. Follow the steps below. Enjoy!</p>
 
-		<div class="text-left">
-	        <ol>
-	          <li>Click "Start Recording" button.</li>
-	          <li>Pick a letter on the keyboard to use as recording key. I use letter "B" (as in blink).</li>
-	          <li>Press down the selected letter multiple times according to the blinking pattern that you desire. Down means ON and release means OFF.</li>
-	          <li>When done, press "Stop Recording" button.</li>
-	          <li>Press "Preview" to replay what you have recorded.</li>
-	          <li>When you're happy with the output, copy-paste the code on the textbox to your Arduino IDE.</li>
-	        </ol>
+    <div class="text-left">
+          <ol>
+            <li>Click "Start Recording" button.</li>
+            <li>Pick a letter on the keyboard to use as recording key. I use letter "B" (as in blink).</li>
+            <li>Press down the selected letter multiple times according to the blinking pattern that you desire. Down means ON and release means OFF.</li>
+            <li>When done, press "Stop Recording" button.</li>
+            <li>Press "Preview" to replay what you have recorded.</li>
+            <li>When you're happy with the output, copy-paste the code on the textbox to your Arduino IDE.</li>
+          </ol>
         </div>
       </div>
 
       <hr>
 
       <div class="row">
-  	  	<div class="span8" style="text-align:center">
-    	  <input type="button" id="btnRecorder" class="btn btn-large btn-primary" value="Start Recording">
-		  <input type="button" id="btnPreview" class="btn btn-large" value="Preview">
-  		</div>
-	  </div>
+        <div class="span8" style="text-align:center">
+        <input type="button" id="btnRecorder" class="btn btn-large btn-primary" value="Start Recording">
+      <input type="button" id="btnPreview" class="btn btn-large" value="Preview">
+      </div>
+    </div>
 
-	  <div class="row" style="margin: 10px 0px;">
-	  	<div class="span8">
-	  		<div>Settings</div>
-	  		<label class="radio" title="e.g 237 becomes 240">
-				<input type="radio" name="radRound" id="radRound" value="0" checked>
-				Round delay to the nearest ten.
-			</label>
-			<label class="radio" title="e.g. 237 becomes 230">
-				<input type="radio" name="radRound" id="radRoundDown" value="1">
-				Round delay DOWNWARD to the nearest ten.
-			</label>
-	  	</div>
-	  </div>
+    <div class="row" style="margin: 10px 0px;">
+      <div class="span8">
+        <div>Settings</div>
+        <label class="radio" title="e.g 237 becomes 240">
+        <input type="radio" name="radRound" id="radRound" value="0" checked>
+        Round delay to the nearest ten.
+      </label>
+      <label class="radio" title="e.g. 237 becomes 230">
+        <input type="radio" name="radRound" id="radRoundDown" value="1">
+        Round delay DOWNWARD to the nearest ten.
+      </label>
+      </div>
+    </div>
 
-	  <div class="row">
-	  	<div style="margin: 30px auto;width: 90px;text-align:center;">
-	  		<div>LED Box</div>
-			<div class="well">
-				<div id="divLed" class="led led-off"></div>	
-			</div>	
-	  	</div>	  	
-	  </div>
+    <div class="row">
+      <div style="margin: 30px auto;width: 90px;text-align:center;">
+        <div>LED Box</div>
+      <div class="well">
+        <div id="divLed" class="led led-off"></div>  
+      </div>  
+      </div>      
+    </div>
 
       <div class="row">
-		<div class="text-left">
-			<div>Code for Arduino IDE</div>
-			<textarea  id="txtResult" cols="50" rows="20" style="width: 100%;"></textarea>
-		</div>
+    <div class="text-left">
+      <div>Code for Arduino IDE</div>
+      <textarea  id="txtResult" cols="50" rows="20" style="width: 100%;"></textarea>
+    </div>
       </div>
 
       <hr>
@@ -138,38 +138,38 @@
 
 
 
-	<!-- Le javascript
+  <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://twitter.github.io/bootstrap/assets/js/jquery.js"></script>
     <script src="js/led-recorder.js"></script>
 
     <script>
-		window.onload = function() {
-			var btnRecorder = document.getElementById('btnRecorder');
-			var btnPreview = document.getElementById('btnPreview');
-			var radRoundDown = document.getElementById('radRoundDown');
-			var divLed = document.getElementById('divLed');
-			var txtResult = document.getElementById('txtResult');
+    window.onload = function() {
+      var btnRecorder = document.getElementById('btnRecorder');
+      var btnPreview = document.getElementById('btnPreview');
+      var radRoundDown = document.getElementById('radRoundDown');
+      var divLed = document.getElementById('divLed');
+      var txtResult = document.getElementById('txtResult');
 
-			var options = {
-				btnRecorder: btnRecorder,
-				btnPreview: btnPreview,
-				radRoundDown: radRoundDown,
-				divLed: divLed,
-				txtResult: txtResult
-			}
-			var ledRecorder = new LedRecorder(options);
+      var options = {
+        btnRecorder: btnRecorder,
+        btnPreview: btnPreview,
+        radRoundDown: radRoundDown,
+        divLed: divLed,
+        txtResult: txtResult
+      }
+      var ledRecorder = new LedRecorder(options);
 
-			
-			window.onkeydown = function() {
-				ledRecorder.ledOn()
-			}
+      
+      window.onkeydown = function() {
+        ledRecorder.ledOn()
+      }
 
-			window.onkeyup = function() {
-				ledRecorder.ledOff();
-			}
-		}
-	</script>
+      window.onkeyup = function() {
+        ledRecorder.ledOff();
+      }
+    }
+  </script>
 </body>
 </html>
